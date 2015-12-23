@@ -27,7 +27,7 @@ public class WebViewFragment  extends BaseFragment {
      */
     @Override
     protected View onCreateView(LayoutInflater inflater, Bundle savedInstanceState) {
-        return null;
+        return inflater.inflate(R.layout.fragment_webview,null);
     }
 
     /**
