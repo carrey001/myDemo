@@ -9,5 +9,7 @@
     <color name="divider_color">#dddddd</color>
 
 
-    <color name="tc3">#ffffff</color>
+    <color name="tc3">#bbbbbb</color>
+    <color name="dc2">#cccccc</color>
+    <color name="bc1">#ffffff</color>
 </resources>

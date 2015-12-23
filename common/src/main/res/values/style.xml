@@ -21,7 +21,10 @@
         <item name="android:backgroundDimEnabled">true</item><!--模糊-->
         <item name="android:windowAnimationStyle">@style/dialogStyle</item>
     </style>
-
+    <style name="dialogStyle" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
     <style name="topright_dialog">
         <item name="android:windowEnterAnimation">@anim/window_top_right_in</item>
         <item name="android:windowExitAnimation">@anim/window_top_right_out</item>
