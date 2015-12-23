@@ -27,7 +27,8 @@
     <dimen name="text_size_25">25sp</dimen>
     <dimen name="text_size_32">32sp</dimen>
     <dimen name="text_size_36">36sp</dimen>
-
+    <!-- 分割线通用宽度 -->
+    <dimen name="divider_line_thickness">0.5dp</dimen>
     <!--action bar height-->
     <dimen name="actionbar_height">48dip</dimen>
     <!--bottom tab height-->

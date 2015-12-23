@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/butten_normail_pop"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_confirm_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/XL"
+        android:text="提示"
+        android:textSize="@dimen/text_size_18" />
+
+
+    <TextView
+        android:id="@+id/tv_confirm_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/XL"
+        android:paddingLeft="@dimen/L"
+        android:paddingRight="@dimen/L"
+        android:textSize="@dimen/text_size_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_line_thickness"
+        android:layout_marginLeft="@dimen/XL"
+        android:layout_marginRight="@dimen/XL" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/XL">
+
+        <Button
+            android:id="@+id/btn_confirm_left"
+            android:layout_width="0dip"
+            android:layout_height="35dip"
+            android:layout_margin="@dimen/L"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corners_white"
+            android:text="取消"
+            />
+
+        <Button
+            android:id="@+id/btn_confirm_right"
+            android:layout_width="0dip"
+            android:layout_height="35dip"
+            android:layout_margin="@dimen/L"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corners_hilight"
+            android:text="确定"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

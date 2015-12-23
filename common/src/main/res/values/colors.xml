@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tutorial_indicator_selected">#888</color>
+    <color name="bc_tutorial">#3fafff</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+    <!-- 通用分割线 便于与UI规范冲突时统一替换 -->
+    <color name="divider_color">#dddddd</color>
+
+
+    <color name="tc3">#ffffff</color>
+</resources>
