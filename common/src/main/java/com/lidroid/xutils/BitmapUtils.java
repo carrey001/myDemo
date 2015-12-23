@@ -51,6 +51,10 @@ public class BitmapUtils implements TaskHandler {
     private BitmapGlobalConfig globalConfig;
     protected BitmapDisplayConfig defaultDisplayConfig;
 
+    public BitmapDisplayConfig getDefaultDisplayConfig() {
+        return defaultDisplayConfig;
+    }
+
     /////////////////////////////////////////////// create ///////////////////////////////////////////////////
     public BitmapUtils(Context context) {
         this(context, null);
