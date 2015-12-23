@@ -79,7 +79,7 @@ public class CommonApp extends Application {
     /**
      * 初始化应用程序
      */
-    private void init() {
+    private final void init() {
         if (shouleInit()) {
             //设置异常处理
             Thread.setDefaultUncaughtExceptionHandler(new ExHandler(Thread.getDefaultUncaughtExceptionHandler()));
