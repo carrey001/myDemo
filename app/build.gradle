@@ -1,0 +1,94 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    lintOptions {
+        abortOnError false   //checkReleaseBuilds就是在打包Release版本的时候进行检测
+        checkReleaseBuilds false
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+//        incremental true
+    }
+    defaultConfig {
+        applicationId "com.carrey.mydemo"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        //        multiDexEnabled false
+    }
+    signingConfigs {
+        release {
+            storeFile file("carrey.jks")
+            storePassword '123456'
+            keyAlias 'carrey'
+            keyPassword '123456'
+        }
+        debug {
+            storeFile file("carrey.jks")
+            storePassword '123456'
+            keyAlias 'carrey'
+            keyPassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "String", "BUILD_DATE", "\"" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "\""
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "int", "SERVER_IP_TYPE", "0"
+            signingConfig signingConfigs.release
+            shrinkResources true
+//            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [isDebug: 'false']
+
+        }
+        debug {
+            buildConfigField "String", "BUILD_DATE", "\"" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "\""
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "int", "SERVER_IP_TYPE", "0"
+            signingConfig signingConfigs.debug
+            shrinkResources false
+//            minifyEnabled false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [isDebug: 'false']
+
+        }
+        te {
+            buildConfigField "String", "BUILD_DATE", "\"" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "\""
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "int", "SERVER_IP_TYPE", "2"
+            signingConfig signingConfigs.release
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [isDebug: 'false']
+        }
+
+    }
+
+    productFlavors{
+        carrey{
+            manifestPlaceholders = [channel:'test']
+        }
+    }
+    tasks.whenTaskAdded{
+        task->
+            if(task.name.contains('AndroidTest')){
+                task.enabled=false
+            }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile project(':common')
+}
