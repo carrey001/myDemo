@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.carrey.common.view.ColorAnimationView
+    <com.carrey.mydemo.guide.coloranimation.ColorAnimationView
         android:id="@+id/colorAnimationView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

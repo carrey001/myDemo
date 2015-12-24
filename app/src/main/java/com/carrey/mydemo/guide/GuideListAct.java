@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.carrey.common.view.ColorAnimationView;
+import com.carrey.mydemo.guide.coloranimation.ColorAnimationView;
 import com.carrey.mydemo.R;
 
 /**

@@ -1,4 +1,4 @@
-package com.carrey.common.view;
+package com.carrey.mydemo.guide.coloranimation;
 
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
