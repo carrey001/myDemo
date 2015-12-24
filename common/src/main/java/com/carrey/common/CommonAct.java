@@ -1,9 +1,11 @@
 package com.carrey.common;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -14,10 +16,14 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.carrey.common.util.AndroidBug5497Workaround;
 import com.carrey.common.util.ApiCompatibleUtil;
+import com.carrey.common.util.SchemeUtil;
 import com.carrey.common.util.SystemUtil;
 import com.carrey.common.util.UIUtil;
 import com.carrey.common.view.swipeback.SwipeBackActivityHelper;
+
+import java.util.Set;
 
 /**
  * 类描述：  activity 的基类
@@ -26,7 +32,7 @@ import com.carrey.common.view.swipeback.SwipeBackActivityHelper;
  */
 
 public abstract class CommonAct extends AppCompatActivity {
-
+    protected View mTitleBar;
     protected View mStatusBarTintView;
     private FrameLayout mContentLayout;
     public boolean mIsResume;
@@ -36,7 +42,7 @@ public abstract class CommonAct extends AppCompatActivity {
     /**
      * 设置通用的一些act共性
      */
-
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,13 +208,12 @@ public abstract class CommonAct extends AppCompatActivity {
      * 默认使用titlebar
      */
     protected boolean isShowTitleBar() {
-        return false;
+        return true;
     }
 
     // 根布局是否使用自定义布局
     private boolean isUseCustomContent() {
-        return true;
-//        return isShowTitleBar() || (useTintStatusBar() && ApiCompatibleUtil.hasKitKat());
+        return isShowTitleBar() || (useTintStatusBar() && ApiCompatibleUtil.hasKitKat());
     }
 
 
@@ -228,10 +233,11 @@ public abstract class CommonAct extends AppCompatActivity {
         if (isUseCustomContent()) {
             // 最外层布局
             RelativeLayout base_view = new RelativeLayout(this);
-            if (isShowTitleBar()) {
+            if (false) {
+//            if (isShowTitleBar()) {
                 initTitleBar();
                 // 填入View
-//                base_view.addView(mTitleBar);
+                base_view.addView(mTitleBar);
             } else if (isShowTintStatusBar() && ApiCompatibleUtil.hasKitKat()) {
                 initTintStatusBar();
                 // 填入View
@@ -248,11 +254,11 @@ public abstract class CommonAct extends AppCompatActivity {
 
             // 设置ContentView
             setContentView(base_view, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-//            if (SystemUtil.isTintStatusBarAvailable(this)) {
-//                if ((getWindow().getAttributes().softInputMode & WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE) != 0) {
-//                    AndroidBug5497Workaround.assistActivity(this);
-//                }
-//            }
+            if (SystemUtil.isTintStatusBarAvailable(this)) {
+                if ((getWindow().getAttributes().softInputMode & WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE) != 0) {
+                    AndroidBug5497Workaround.assistActivity(this);
+                }
+            }
         }
 
     }
@@ -277,7 +283,16 @@ public abstract class CommonAct extends AppCompatActivity {
      * 初始化头部
      */
     protected void initTitleBar() {
-
+        // 主标题栏
+        mTitleBar = new View(this);
+        mTitleBar.setId(R.id.titlebar);
+        mTitleBar.setPadding(0, SystemUtil.isTintStatusBarAvailable(this) ? SystemUtil.getStatusBarHeight() : 0, 0, 0);
+//        mTitleBar.setLeftClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
     }
 
 
@@ -288,10 +303,18 @@ public abstract class CommonAct extends AppCompatActivity {
     private void convertDataToBundle() {
         Uri uri = getIntent().getData();
         if (uri != null && Intent.ACTION_VIEW.equals(getIntent().getAction())) {
-
-
+            Set<String> params = SchemeUtil.getQueryParameterNames(uri);
+            if (params != null) {
+                for (String key : params) {
+                    String value = uri.getQueryParameter(key);
+                    if ("true".equals(value) || "false".equals(value)) {
+                        getIntent().putExtra(key, Boolean.parseBoolean(value));
+                    } else {
+                        getIntent().putExtra(key, value);
+                    }
+                }
+            }
         }
-
     }
 
     /**
