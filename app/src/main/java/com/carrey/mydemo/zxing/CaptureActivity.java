@@ -1,5 +1,6 @@
 package com.carrey.mydemo.zxing;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
@@ -9,7 +10,6 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -36,7 +36,7 @@ import java.util.Vector;
  *
  * @author Ryan.Tang
  */
-public class CaptureActivity extends AppCompatActivity implements Callback, View.OnClickListener {
+public class CaptureActivity extends Activity implements Callback, View.OnClickListener {
     private static final String SCHEME = "com";
 
     private CaptureActivityHandler handler;

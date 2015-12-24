@@ -1,19 +1,26 @@
 package com.carrey.mydemo.guide;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
-import com.carrey.mydemo.guide.coloranimation.ColorAnimationView;
+import com.carrey.common.util.SystemUtil;
+import com.carrey.common.util.UIUtil;
+import com.carrey.mydemo.BaseAct;
+import com.carrey.mydemo.HomeItem;
 import com.carrey.mydemo.R;
+import com.carrey.mydemo.guide.coloranimation.ColorAnimatonAct;
+import com.carrey.mydemo.guide.vectorguide.TutorialActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 类描述：
@@ -21,73 +28,75 @@ import com.carrey.mydemo.R;
  * 创建时间：2015/12/22 10:56
  */
 
-public class GuideListAct extends AppCompatActivity {
+public class GuideListAct extends BaseAct {
+    private ListView listView;
+    private List<HomeItem> data = new ArrayList<>();
 
-    private ColorAnimationView colorAnimationView;
-    private ViewPager viewPager;
-
-    private static final int[] images = {R.mipmap.i1, R.mipmap.i2, R.mipmap.i3};
-
+    /**
+     * 初始化数据
+     *
+     * @param savedInstanceState
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_guid_list);
-        colorAnimationView = (ColorAnimationView) findViewById(R.id.colorAnimationView);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+    protected void initData(Bundle savedInstanceState) {
 
-        viewPager.setAdapter(new MyFragmentStatePager(getSupportFragmentManager()));
+    }
 
-        colorAnimationView.setmViewPager(viewPager, images.length);
-        colorAnimationView.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+    /**
+     * 初始化View
+     */
+    @Override
+    protected void initViews() {
+        setContentView(R.layout.activity_main);
+        listView = (ListView) findViewById(R.id.list_view);
+        initListData();
+        listView.setAdapter(new MyAdapter());
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(GuideListAct.this, data.get(position).clazz));
             }
         });
     }
 
-    public class MyFragmentStatePager
-            extends FragmentStatePagerAdapter {
+    private void initListData() {
+        data.add(new HomeItem("引导页1", ColorAnimatonAct.class));
+        data.add(new HomeItem("引导页2", TutorialActivity.class));
 
-        public MyFragmentStatePager(FragmentManager fm) {
-            super(fm);
-        }
+    }
 
-        @Override
-        public Fragment getItem(int position) {
-            return new MyFragment(position);
-        }
+    class MyAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            return images.length;
+            return data.size();
         }
-    }
 
-    @SuppressLint("ValidFragment")
-    public class MyFragment
-            extends Fragment {
-        private int position;
-
-        public MyFragment(int position) {
-            this.position = position;
-        }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            ImageView imageView = new ImageView(getActivity());
-            imageView.setImageResource(images[position]);
-            return imageView;
+        public Object getItem(int position) {
+            return data.get(position);
+        }
+
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = new TextView(GuideListAct.this);
+                AbsListView.LayoutParams params = new AbsListView.LayoutParams(SystemUtil.getScreenWidth(),
+                        UIUtil.dip2px(30));
+                convertView.setLayoutParams(params);
+                convertView.setPadding(10,10,10,10);
+                ((TextView)convertView).setTextColor(Color.parseColor("#000000"));
+            }
+            ((TextView) convertView).setText(data.get(position).name);
+            return convertView;
         }
     }
 }

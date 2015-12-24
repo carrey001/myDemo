@@ -12,4 +12,8 @@
     <color name="tc3">#bbbbbb</color>
     <color name="dc2">#cccccc</color>
     <color name="bc1">#ffffff</color>
+
+
+    <color name="bc_tutorial1">#fbcf20</color>
+    <color name="bc_tutorial2">#42C18E</color>
 </resources>

@@ -1,11 +1,8 @@
 package com.carrey.mydemo;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -22,28 +19,27 @@ import com.carrey.mydemo.zxing.CaptureActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAct {
 
     private ListView listView;
     private List<HomeItem> data = new ArrayList<>();
 
+    /**
+     * 初始化数据
+     *
+     * @param savedInstanceState
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initData(Bundle savedInstanceState) {
+
+    }
+
+    /**
+     * 初始化View
+     */
+    @Override
+    protected void initViews() {
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, GuideListAct.class));
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         listView = (ListView) findViewById(R.id.list_view);
         initListData();
         listView.setAdapter(new MyAdapter());
@@ -53,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, data.get(position).clazz));
             }
         });
-
     }
 
     private void initListData() {
@@ -89,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 AbsListView.LayoutParams params = new AbsListView.LayoutParams(SystemUtil.getScreenWidth(),
                         UIUtil.dip2px(30));
                 convertView.setLayoutParams(params);
+                convertView.setPadding(10,10,10,10);
+                ((TextView)convertView).setTextColor(Color.parseColor("#000000"));
             }
             ((TextView) convertView).setText(data.get(position).name);
             return convertView;
