@@ -52,7 +52,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.2"
             android:background="@null"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/ic_point"
             android:visibility="invisible" />
 
     </LinearLayout>

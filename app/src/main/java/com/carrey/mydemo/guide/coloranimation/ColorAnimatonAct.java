@@ -9,8 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.carrey.common.util.ApiCompatibleUtil;
 import com.carrey.mydemo.BaseAct;
 import com.carrey.mydemo.R;
 
@@ -27,6 +29,20 @@ public class ColorAnimatonAct extends BaseAct {
 
     private static final int[] images = {R.mipmap.i1, R.mipmap.i2, R.mipmap.i3};
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (ApiCompatibleUtil.hasKitKat()) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        super.onCreate(savedInstanceState);
+    }
+
     /**
      * 初始化数据
      *
@@ -35,6 +51,11 @@ public class ColorAnimatonAct extends BaseAct {
     @Override
     protected void initData(Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    protected boolean isShowTitleBar() {
+        return false;
     }
 
     /**

@@ -50,6 +50,6 @@
         android:paddingBottom="12dp"
         android:paddingTop="13dp"
         android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_point"
          />
 </RelativeLayout>

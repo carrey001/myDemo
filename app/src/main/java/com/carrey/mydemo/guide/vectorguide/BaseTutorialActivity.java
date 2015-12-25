@@ -161,7 +161,7 @@ public abstract class BaseTutorialActivity extends AppCompatActivity {
  
         for(int i = 0 ; i < mDataConfig.getPageNum() ; i++){
             ImageView circle = new ImageView(this);
-            circle.setImageResource(R.mipmap.ic_launcher);
+            circle.setImageResource(R.mipmap.ic_point);
             circle.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             circle.setAdjustViewBounds(true);
             circle.setPadding(padding, 0, padding, 0);

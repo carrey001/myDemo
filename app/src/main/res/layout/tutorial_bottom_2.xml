@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="#55000000"
-        android:visibility="gone"></TextView>
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/bottom_container"
@@ -49,7 +49,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.2"
             android:background="@null"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/ic_point"
             />
 
         <ImageButton
@@ -59,7 +59,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.2"
             android:background="@null"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/ic_point"
             android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>
