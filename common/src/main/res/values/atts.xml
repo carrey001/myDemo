@@ -16,5 +16,29 @@
     </declare-styleable>
     <attr name="SwipeBackLayoutStyle" format="reference"/>
 
+    <!-- 健康测量尺子 -->
+    <declare-styleable name="RulerView">
+        <!-- 最小值 -->
+        <attr name="scaleMin" format="float"/>
+        <!-- 最大值 -->
+        <attr name="scaleMax" format="float"/>
+        <!-- 第一个刻度值，默认等于最小值 -->
+        <attr name="scaleFirstMarkValue" format="float"/>
+        <!-- 每刻度间隔值 -->
+        <attr name="scaleDeltaValue" format="float"/>
+        <!-- 每刻度间隔距离 -->
+        <attr name="scaleDeltaPixel" format="integer"/>
+        <!-- 尺子背景 -->
+        <attr name="scaleRulerBg" format="reference"/>
+        <!-- 尺子 -->
+        <attr name="scaleRuler" format="reference"/>
+        <!-- 标尺 -->
+        <attr name="scaleThumb" format="reference"/>
+        <!-- 上标尺 -->
+        <attr name="scaleTopThumb" format="reference"/>
+        <!-- 是否垂直 -->
+        <attr name="scaleVertical" format="boolean"/>
+    </declare-styleable>
+
 
 </resources>

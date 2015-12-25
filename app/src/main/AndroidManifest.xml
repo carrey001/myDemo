@@ -43,6 +43,8 @@
 
         <activity android:name=".zxing.CaptureActivity"/>
         <activity android:name=".zxing.CaptureErrorResultActivity"/>
+
+        <activity android:name=".ruler.RulerAct"/>
     </application>
 
 </manifest>

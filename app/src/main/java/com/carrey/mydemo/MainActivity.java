@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.carrey.common.util.SystemUtil;
 import com.carrey.common.util.UIUtil;
 import com.carrey.mydemo.guide.GuideListAct;
+import com.carrey.mydemo.ruler.RulerAct;
 import com.carrey.mydemo.zxing.CaptureActivity;
 
 import java.util.ArrayList;
@@ -54,6 +55,8 @@ public class MainActivity extends BaseAct {
     private void initListData() {
         data.add(new HomeItem("引导页", GuideListAct.class));
         data.add(new HomeItem("二维码", CaptureActivity.class));
+        data.add(new HomeItem("尺子", RulerAct.class));
+
 
     }
 

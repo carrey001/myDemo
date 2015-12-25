@@ -218,16 +218,16 @@ public abstract class CommonAct extends AppCompatActivity {
 
 
     /**
+     * 初始化View
+     */
+    protected abstract void initViews();
+
+    /**
      * 初始化数据
      *
      * @param savedInstanceState
      */
     protected abstract void initData(Bundle savedInstanceState);
-
-    /**
-     * 初始化View
-     */
-    protected abstract void initViews();
 
     protected void initTopView() {
         if (isUseCustomContent()) {
