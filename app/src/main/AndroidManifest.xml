@@ -45,6 +45,7 @@
         <activity android:name=".zxing.CaptureErrorResultActivity"/>
 
         <activity android:name=".ruler.RulerAct"/>
+        <activity android:name=".photoview.PhotoAct"/>
     </application>
 
 </manifest>

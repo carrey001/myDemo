@@ -39,7 +39,7 @@
             app:scaleDeltaPixel="20"
             app:scaleDeltaValue="1"
             app:scaleMax="250"
-            app:scaleMin="50"
+            app:scaleMin="-50"
             app:scaleThumb="@mipmap/slider_down"
             app:scaleTopThumb="@mipmap/slider_top"
             android:background="@color/tc3"
