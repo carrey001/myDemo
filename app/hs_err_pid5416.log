@@ -1,0 +1,163 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 8192 bytes for char in C:\jdk7u2_64p\jdk7u21\hotspot\src\share\vm\utilities\hashtable.cpp
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:58), pid=5416, tid=7956
+#
+# JRE version: 7.0_21-b11
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (23.21-b01 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000000024ce800):  JavaThread "main" [_thread_in_vm, id=7956, stack(0x0000000002500000,0x0000000002600000)]
+
+Stack: [0x0000000002500000,0x0000000002600000]
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  sun.nio.cs.ext.ExtendedCharsets.<init>()V+1743
+v  ~StubRoutines::call_stub
+j  sun.reflect.NativeConstructorAccessorImpl.newInstance0(Ljava/lang/reflect/Constructor;[Ljava/lang/Object;)Ljava/lang/Object;+0
+j  sun.reflect.NativeConstructorAccessorImpl.newInstance([Ljava/lang/Object;)Ljava/lang/Object;+72
+j  sun.reflect.DelegatingConstructorAccessorImpl.newInstance([Ljava/lang/Object;)Ljava/lang/Object;+5
+j  java.lang.reflect.Constructor.newInstance([Ljava/lang/Object;)Ljava/lang/Object;+80
+j  java.lang.Class.newInstance0()Ljava/lang/Object;+118
+j  java.lang.Class.newInstance()Ljava/lang/Object;+16
+j  java.nio.charset.Charset$3.run()Ljava/lang/Object;+7
+v  ~StubRoutines::call_stub
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;)Ljava/lang/Object;+0
+j  java.nio.charset.Charset.probeExtendedProvider()V+7
+j  java.nio.charset.Charset.lookupExtendedCharset(Ljava/lang/String;)Ljava/nio/charset/Charset;+14
+j  java.nio.charset.Charset.lookup2(Ljava/lang/String;)Ljava/nio/charset/Charset;+48
+j  java.nio.charset.Charset.lookup(Ljava/lang/String;)Ljava/nio/charset/Charset;+40
+j  java.nio.charset.Charset.isSupported(Ljava/lang/String;)Z+1
+v  ~StubRoutines::call_stub
+j  java.lang.System.initProperties(Ljava/util/Properties;)Ljava/util/Properties;+0
+j  java.lang.System.initializeSystemClass()V+13
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00000000024a4000 JavaThread "Finalizer" daemon [_thread_blocked, id=8572, stack(0x0000000012450000,0x0000000012550000)]
+  0x00000000024a3000 JavaThread "Reference Handler" daemon [_thread_blocked, id=8456, stack(0x00000000121f0000,0x00000000122f0000)]
+=>0x00000000024ce800 JavaThread "main" [_thread_in_vm, id=7956, stack(0x0000000002500000,0x0000000002600000)]
+
+Other Threads:
+  0x0000000011172800 VMThread [stack: 0x00000000120a0000,0x00000000121a0000] [id=804]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00000000024cae20] StringTable_lock - owner thread: 0x00000000024ce800
+
+Heap
+ PSYoungGen      total 50176K, used 861K [0x00000007aaab0000, 0x00000007ae2a0000, 0x0000000800000000)
+  eden space 43072K, 2% used [0x00000007aaab0000,0x00000007aab87630,0x00000007ad4c0000)
+  from space 7104K, 0% used [0x00000007adbb0000,0x00000007adbb0000,0x00000007ae2a0000)
+  to   space 7104K, 0% used [0x00000007ad4c0000,0x00000007ad4c0000,0x00000007adbb0000)
+ ParOldGen       total 114560K, used 0K [0x0000000700000000, 0x0000000706fe0000, 0x00000007aaab0000)
+  object space 114560K, 0% used [0x0000000700000000,0x0000000700000000,0x0000000706fe0000)
+ PSPermGen       total 21248K, used 1291K [0x00000006fae00000, 0x00000006fc2c0000, 0x0000000700000000)
+  object space 21248K, 6% used [0x00000006fae00000,0x00000006faf42e20,0x00000006fc2c0000)
+
+Card table byte_map: [0x0000000005690000,0x0000000005ec0000] byte_map_base: 0x0000000001eb9000
+
+Polling page: 0x0000000000230000
+
+Code Cache  [0x0000000002690000, 0x0000000002900000, 0x0000000005690000)
+ total_blobs=113 nmethods=0 adapters=88 free_code_cache=48800Kb largest_free_block=49970880
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (1 events):
+Event: 0.030 Thread 0x00000000024ce800 Threw 0x00000007aaab61b0 at C:\jdk7u2_64p\jdk7u21\hotspot\src\share\vm\prims\jni.cpp:3994
+
+Events (10 events):
+Event: 0.038 loading class 0x000000001118d750
+Event: 0.038 loading class 0x000000001118eb30
+Event: 0.038 loading class 0x000000001117aa30
+Event: 0.038 loading class 0x000000001117aa30 done
+Event: 0.038 loading class 0x000000001118eb30 done
+Event: 0.039 loading class 0x000000001118d750 done
+Event: 0.039 loading class 0x0000000011185950
+Event: 0.039 loading class 0x0000000011185950 done
+Event: 0.039 loading class 0x000000001118eb90
+Event: 0.039 loading class 0x000000001118eb90 done
+
+
+Dynamic libraries:
+0x000000013f260000 - 0x000000013f293000 	D:\environment\jdk\jdk-7u21-windows-x64\bin\java.exe
+0x0000000076cd0000 - 0x0000000076e79000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000076ab0000 - 0x0000000076bcf000 	C:\Windows\system32\kernel32.dll
+0x000007fefcd00000 - 0x000007fefcd6c000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefeaa0000 - 0x000007fefeb7b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefcee0000 - 0x000007fefcf7f000 	C:\Windows\system32\msvcrt.dll
+0x000007fefd5d0000 - 0x000007fefd5ef000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007fefed90000 - 0x000007fefeebd000 	C:\Windows\system32\RPCRT4.dll
+0x0000000076bd0000 - 0x0000000076cca000 	C:\Windows\system32\USER32.dll
+0x000007fefd560000 - 0x000007fefd5c7000 	C:\Windows\system32\GDI32.dll
+0x000007fefcf80000 - 0x000007fefcf8e000 	C:\Windows\system32\LPK.dll
+0x000007fefd490000 - 0x000007fefd559000 	C:\Windows\system32\USP10.dll
+0x000007fefb530000 - 0x000007fefb724000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.18837_none_fa3b1e3d17594757\COMCTL32.dll
+0x000007fefd7b0000 - 0x000007fefd821000 	C:\Windows\system32\SHLWAPI.dll
+0x000007fefcfe0000 - 0x000007fefd00e000 	C:\Windows\system32\IMM32.DLL
+0x000007fefeec0000 - 0x000007fefefc9000 	C:\Windows\system32\MSCTF.dll
+0x0000000057950000 - 0x0000000057a21000 	D:\environment\jdk\jdk-7u21-windows-x64\jre\bin\msvcr100.dll
+0x000000005b430000 - 0x000000005bb51000 	D:\environment\jdk\jdk-7u21-windows-x64\jre\bin\server\jvm.dll
+0x000007fef6ec0000 - 0x000007fef6ec9000 	C:\Windows\system32\WSOCK32.dll
+0x000007fefcf90000 - 0x000007fefcfdd000 	C:\Windows\system32\WS2_32.dll
+0x000007fefefd0000 - 0x000007fefefd8000 	C:\Windows\system32\NSI.dll
+0x000007fefa720000 - 0x000007fefa75b000 	C:\Windows\system32\WINMM.dll
+0x0000000076e90000 - 0x0000000076e97000 	C:\Windows\system32\PSAPI.DLL
+0x0000000072f00000 - 0x0000000072f0f000 	D:\environment\jdk\jdk-7u21-windows-x64\jre\bin\verify.dll
+0x0000000072ed0000 - 0x0000000072ef8000 	D:\environment\jdk\jdk-7u21-windows-x64\jre\bin\java.dll
+0x0000000072eb0000 - 0x0000000072ec5000 	D:\environment\jdk\jdk-7u21-windows-x64\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Xmx4g -Dfile.encoding=GBK -Duser.country=CN -Duser.language=zh -Duser.variant 
+java_command: com.android.dx.command.Main --dex --num-threads=4 --output D:\workspace\myDemo\app\build\intermediates\pre-dexed\carrey\debug\core-3.0.0_ce72910f7cb015b2dab19f2df517e7e2a43e3a4a.jar D:\workspace\myDemo\app\libs\core-3.0.0.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\environment\jdk\jdk-7u21-windows-x64
+PATH=D:\environment\python\;D:\environment\python\Scripts;D:\environment\jdk\jdk-7u21-windows-x64\bin;D:\environment\git\Git\bin;D:\environment\sdk\sdk\platform-tools;;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Lenovo\Fingerprint Manager Pro\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\
+USERNAME=carrey
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 61 Stepping 4, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, ht, tsc, tscinvbit
+
+Memory: 4k page, physical 10994044k(3743692k free), swap 10992208k(5076k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (23.21-b01) for windows-amd64 JRE (1.7.0_21-b11), built on Apr  4 2013 08:11:28 by "java_re" with unknown MS VC++:1600
+
+time: Wed Jan 13 15:33:28 2016
+elapsed time: 0 seconds
+

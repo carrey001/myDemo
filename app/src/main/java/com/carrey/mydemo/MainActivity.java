@@ -60,6 +60,7 @@ public class MainActivity extends BaseAct {
         data.add(new HomeItem("尺子", RulerAct.class));
         data.add(new HomeItem("图片", PhotoAct.class));
         data.add(new HomeItem("http", HttpTestActivity.class));
+        data.add(new HomeItem("图片选择", PicPick.class));
 
 
     }
