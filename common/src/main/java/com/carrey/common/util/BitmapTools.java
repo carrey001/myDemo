@@ -119,16 +119,14 @@ public class BitmapTools {
                 }
                 break;
             case ORIGINAL:
-//				config.setLoadFailedDrawable(context.getResources().getDrawable(R.drawable.default_image_adaptive));
-//				config.setLoadingDrawable(context.getResources().getDrawable(R.drawable.default_downloading_adaptive));
+				config.setLoadFailedDrawable(context.getResources().getDrawable(R.drawable.ic_default_normal));
+				config.setLoadingDrawable(context.getResources().getDrawable(R.drawable.ic_default_normal));
                 config.setShowOriginal(true);
                 break;
         }
         if (defaultDrawableRes != 0) {
-//            config.setLoadFailedDrawable(context.getResources().getDrawable(defaultDrawableRes));
             bitmapUtils.configDefaultLoadFailedImage(context.getResources().getDrawable(defaultDrawableRes)) ;
             bitmapUtils.configDefaultLoadingImage(context.getResources().getDrawable(defaultDrawableRes));
-//            config.setLoadingDrawable(context.getResources().getDrawable(defaultDrawableRes));
         }
         bitmapUtils.display(container, url, config);
     }

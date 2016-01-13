@@ -36,7 +36,7 @@ public class CommonApp extends Application {
         init();
     }
 
-    public static CommonApp getsApp() {
+    public static CommonApp getApp() {
         return sApp;
     }
 

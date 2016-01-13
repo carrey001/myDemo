@@ -46,6 +46,7 @@
 
         <activity android:name=".ruler.RulerAct"/>
         <activity android:name=".photoview.PhotoAct"/>
+        <activity android:name=".httptest.HttpTestActivity"/>
     </application>
 
 </manifest>

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.carrey.common.util.SystemUtil;
 import com.carrey.common.util.UIUtil;
 import com.carrey.mydemo.guide.GuideListAct;
+import com.carrey.mydemo.httptest.HttpTestActivity;
 import com.carrey.mydemo.photoview.PhotoAct;
 import com.carrey.mydemo.ruler.RulerAct;
 import com.carrey.mydemo.zxing.CaptureActivity;
@@ -57,7 +58,8 @@ public class MainActivity extends BaseAct {
         data.add(new HomeItem("引导页", GuideListAct.class));
         data.add(new HomeItem("二维码", CaptureActivity.class));
         data.add(new HomeItem("尺子", RulerAct.class));
-        data.add(new HomeItem("tup", PhotoAct.class));
+        data.add(new HomeItem("图片", PhotoAct.class));
+        data.add(new HomeItem("http", HttpTestActivity.class));
 
 
     }

@@ -49,7 +49,7 @@ public abstract class CommonAct extends AppCompatActivity {
         // 固定竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         //app 启动
-        CommonApp.getsApp().start();
+        CommonApp.getApp().start();
 
         if (isValidate()) {
 

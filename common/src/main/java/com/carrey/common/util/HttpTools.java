@@ -47,6 +47,7 @@ public class HttpTools {
 
     public <T> HttpHandler<T> send(HttpRequest.HttpMethod method, String path, RequestParams params, RequestCallBack<T> callBack) {
         String url = BaseConfig.getUrl() + path;
+        url =path;
         if (params == null) {
             LogUtils.d(BaseConstant.LOG_PREFIX + "url(" + method + "):" + url);
         } else {
